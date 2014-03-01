@@ -1,5 +1,0 @@
-Things to check:
-
-Check if the number of decoded attachments matches to the real amount of attachments in mail file
-Check if there's attachments in order to create the output/attachments/ directory
-Check if there's downloads in order to create the output/binaries/ directory
