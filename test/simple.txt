@@ -1,0 +1,5 @@
+HELO server.com
+DATA
+asd
+.
+QUIT
