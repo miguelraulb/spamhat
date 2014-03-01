@@ -1,0 +1,5 @@
+2012-06-19|xzamora|Base.pm|Se corrige la funcion checkFormData 
+2012-06-14|xzamora|Base.pm|Se agrega la funcion checkFormData que ayuda a la comprobacion de los formularios
+2012-05-31|xzamora|Base.pm|Se agrega la funcion formDataToHash ordena los datos recibidos en un hash de modo que %hash{campo}=valor
+2012-04-30|jsantillan|Base.pm|Se agregan la funcion de logMsgT con soporte para tracking
+2012-04-30|jsantillan|Base.pm|Se agregan la funcion de getTimestamp que permite obtener la hora en formato T (YYYY-MM-DDThh:mm:ss), Ddate (YYYYMMDD) y Hdate (hhmm)
