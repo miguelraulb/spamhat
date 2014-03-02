@@ -172,14 +172,18 @@ sub Collector {
 									$client_socket->send("354 Enter message, end with \".\"\r\n");
 									while( my $line = <$client_socket> ){
 				 						chomp($line);
-										print "$line" if $CONFIG_VARS::debug == 1;
-										BASE::logMsgT($fcaller,"$line",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-										if($line eq '.'){
+										if($line =~ m/^(\.)$/){
 											print FH "$line\n";
+											print "$line" if $CONFIG_VARS::debug == 1;
+											BASE::logMsgT($fcaller,"$line",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 											last;
+										}else{
+											print FH "$line\n";
+											print "$line" if $CONFIG_VARS::debug == 1;
+											BASE::logMsgT($fcaller,"$line",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 										}
-										print FH "$line\n";
 								  	}
+								  	BASE::logMsgT($fcaller,"Data has been received",2,$GLOBAL_VARS::LOG_FH);
 									$client_socket->send("250 OK: Queued message as $msg_id\r\n");
 								}
 			when (/QUIT/i)		{ $client_socket->send("221 Bye\r\n"); 
