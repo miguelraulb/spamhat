@@ -1,3 +1,0 @@
-www.google.com.mx
-www.malicious.com
-http://www.bad.domain.com
