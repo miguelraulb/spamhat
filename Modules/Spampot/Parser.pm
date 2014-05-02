@@ -38,7 +38,7 @@ sub ParseMail{
 	my $source_port		= shift;
 	my $destination_ip	= shift;
 	my $destination_port	= shift;
-	my $time	 			= BASE::getTimestamp("localtime","Tdate");
+	my $time	 	= BASE::getTimestamp("localtime","Tdate");
 
 	my $dbh = ConnectDatabase("ParseMail");
 	URLS::GetUrls("ParseMail","$CONFIG_VARS::spam_directory/$file_name",$file_name);

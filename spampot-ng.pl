@@ -45,7 +45,7 @@ package GLOBAL_VARS;
 	our $DB_H;
 ###############################################################################
 package main;
-	$Config{useithreads} or die('Recompile Perl with threads to run this tool.');
+	$Config{useithreads} or die('Recompile Perl with threads in order to run this tool.');
 	require $GLOBAL_VARS::CONFIG_FILE;
 	open($GLOBAL_VARS::LOG_FH,"+>>$CONFIG_VARS::LOG") || die "[main] Error opening the log file: $CONFIG_VARS::LOG\n";
 	CheckConfig("main");

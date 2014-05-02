@@ -10,8 +10,8 @@ package ATTACHMENTS;
     
 sub DecodeAttachments{
     my $fcaller     = shift;
-	my $fname       = BASE::getFunctionName($fcaller,(caller(0))[3]);
-	my $file_name   = shift;
+    my $fname       = BASE::getFunctionName($fcaller,(caller(0))[3]);
+    my $file_name   = shift;
     my $total       = 0;
     my $parseropts = {
         enable_cache    => 1,
@@ -23,19 +23,21 @@ sub DecodeAttachments{
     
     BASE::logMsgT($fcaller,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
     my $mailbox = Mail::MboxParser->new($file_name,decode=>'ALL',parseropts=>$parseropts);
+    my @messages_array = $mailbox->get_messages;
     ######################################################################
     # Keep this in mind if you wish to set up a new line delimiter       #
     # my $mb = new Mail::MboxParser ("mbox", newline => '#DELIMITER');   #
     ######################################################################
-    
-    unless(-d "$CONFIG_VARS::attachments_output/$name_folder"){
-        mkdir "$CONFIG_VARS::attachments_output/$name_folder";
-        print "Created directory $CONFIG_VARS::attachments_output/$name_folder\n" if $CONFIG_VARS::debug == 1;
-        BASE::logMsgT($fcaller,"Created directory $CONFIG_VARS::attachments_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);
-    }
+
+   
     BASE::logMsgT($fcaller,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
-    while (my $msg = $mailbox->next_message)
+    while (my $msg = $mailbox->get_messages)
     {
+        unless(-d "$CONFIG_VARS::attachments_output/$name_folder"){
+            mkdir "$CONFIG_VARS::attachments_output/$name_folder";
+            print "Created directory $CONFIG_VARS::attachments_output/$name_folder\n" if $CONFIG_VARS::debug == 1;
+            BASE::logMsgT($fcaller,"Created directory $CONFIG_VARS::attachments_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);
+        }
         $msg->store_all_attachments(path => "$CONFIG_VARS::attachments_output/$name_folder");
         if ($msg =~ /.*name="([A-z\d\-\.]+)"/){
             $name=$1;
