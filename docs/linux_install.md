@@ -2,7 +2,7 @@
 
 <p>
 <h2>Perl</h2>
-In case Perl is not present in your Linux system you just have to type
+In case Perl is not present in your Linux system you just have to type<br>
 <code> # apt-get install perl </code> 
 Probably you might need to update your CPAN repositories (also if it's the first time you run CPAN)
 <code> # cpan </code> 
