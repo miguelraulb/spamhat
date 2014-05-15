@@ -9,7 +9,6 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 <h2>Installation Requirements on Debian (base) 6.x, 7.x</h2>
 <ul>
 	<li>Perl 5.10.1</li>
-	<code>Perl is on the most of the Linux distros, as well in Debian, just check that you have this version</code>
 	<li>CPAN Modules</li>
 	<ul>
 		<li>IO::Socket</li>
@@ -25,7 +24,6 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 		<li>Digest::MD5::File</li>
 	</ul>
 	<li>MySQL Server</li>
-	<code># apt-get install mysql-server</code>
 </ul>
 <h2>Installation</h2>
 Linux Debian installation instructions
