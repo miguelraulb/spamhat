@@ -24,7 +24,8 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 		<li>Digest::MD5</li>
 		<li>Digest::MD5::File</li>
 	</ul>
-	<code># cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File</code>
 	<li>MySQL Server</li>
 	<code># apt-get install mysql-server</code>
 </ul>
+<h2>Installation</h2>
+Linux Debian installation instructions
