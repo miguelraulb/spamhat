@@ -6,7 +6,7 @@ Feel free to ask anything or request help for development
 
 miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 
-<h1>Installation Requirements on Debian (base) 6.x, 7.x</h1>
+<h2>Installation Requirements on Debian (base) 6.x, 7.x</h2>
 <ul>
 	<li>Perl 5.10.1</li>
 	<code>Perl is on the most of the Linux distros, just check that you have this version</code>
@@ -23,7 +23,7 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 		<li>DBD::mysql</li>
 		<li>Digest::MD5</li>
 		<li>Digest::MD5::File</li>
-	<code># cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File</code>
 	</ul>
+	<code># cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File</code>
 	<li>MySQL Server</li>
 </ul>
