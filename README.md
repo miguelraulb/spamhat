@@ -12,6 +12,16 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 	<li>CPAN Modules</li>
 	<ul>
 		<li>IO::Socket</li>
+		<li>Switch</li>
+		<li>Proc::ProcessTable</li>
+		<li>IPC::System::Simple</li>
+		<li>Mail::MboxParser</li>
+		<li>LWP::Simple</li>
+		<li>LWP::UserAgent</li>
+		<li>DBI</li>
+		<li>DBD::mysql</li>
+		<li>Digest::MD5</li>
+		<li>Digest::MD5::File</li>
 	</ul>
 	<li>MySQL Server</li>
 </ul>
