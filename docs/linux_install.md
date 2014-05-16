@@ -12,13 +12,13 @@ And inside the CPAN shell type: <br>
 </p>
 
 <p>
-<h2>CPAN Modules</h2> <br>
+<h2>CPAN Modules</h2> 
 Install the required CPAN modules <br>
 <code> # cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File </code> <br>
 </p>
 
 <p>
-<h2>MySQL Server</h2> <br>
+<h2>MySQL Server</h2>
 Install the mysql-server package <br>
 <code> # apt-get install mysql-server </code> <br>
 </p>
