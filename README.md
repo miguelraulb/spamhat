@@ -26,4 +26,21 @@ miguelraulb &lt;at&gt; gmail &lt;dot&gt; com
 	<li>MySQL Server</li>
 </ul>
 <h2>Installation</h2>
-Linux Debian installation instructions
+Linux Debian installation <a href="https://github.com/miguelraulb/spampot/blob/master/docs/linux_install.md">instructions</a>
+
+<h2>Execution</h2>
+
+Once you have all the modules installed you just have to create a database called <code>spampot</code> or whatever you wish to name it, create a user with password and then assign the name of your database to the user you've already created.
+
+Please set this values on the <code>spampot-ng.conf</code> file.
+
+In order to run the tool you have to run it with <code>sudo</code> or using a wrapper as authbind, <a href="http://mutelight.org/authbind">here</a> are the instructions
+<br>
+<code> # sudo perl spampot-ng.pl </code>
+<br>
+<code> # authbind --deep perl spampot-ng.pl </code>
+
+<h2>Author</h2>
+<ul>
+	<li>Miguel Raúl Bautista Soria</li>
+</ul>
