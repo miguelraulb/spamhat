@@ -1,24 +1,26 @@
-<h1>Installation</h1>
+Installation
+============
 
-<p>
-<h2>Perl</h2>
-In case Perl is not present in your Linux system you just have to type<br>
-<code> # apt-get install perl </code> <br>
-Probably you might need to update your CPAN repositories (also if it's the first time you run CPAN) <br>
-<code> # cpan </code> <br> 
-And inside the CPAN shell type: <br>
-<code> > upgrade </code> <br>
-<code> > reload </code> <br>
-</p>
+Perl
+----
 
-<p>
-<h2>CPAN Modules</h2> 
-Install the required CPAN modules <br>
-<code> # cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File </code> <br>
-</p>
+In case Perl is not available in your Linux system you just have to type
+`# apt-get install perl`
+Probably you might need to update your CPAN repositories (also if it is the first time you run CPAN) 
+`# cpan` 
+And inside the CPAN shell type: 
+`> upgrade`
+`> reload`
 
-<p>
-<h2>MySQL Server</h2>
-Install the mysql-server package <br>
-<code> # apt-get install mysql-server </code> <br>
-</p>
+CPAN Modules 
+------------
+
+Install the required CPAN modules 
+`# cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File`
+
+MySQL Server
+------------
+
+Install the mysql-server package 
+`# apt-get install mysql-server`
+
