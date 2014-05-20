@@ -5,10 +5,15 @@ Perl
 ----
 
 In case Perl is not available in your Linux system you just have to type
+
 `# apt-get install perl`
+
 Probably you might need to update your CPAN repositories (also if it is the first time you run CPAN) 
+
 `# cpan` 
+
 And inside the CPAN shell type: 
+
 `> upgrade`
 `> reload`
 
