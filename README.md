@@ -1,8 +1,8 @@
 Spam Honeypot Tool
 ==================
 
-Open Relay Simulator Tool for the analysis and spam harvesting
---------------------------------------------------------------
+Simple Open Relay Simulator for Spam Capture and Analysis
+---------------------------------------------------------
 
 Feel free to ask anything or request help for development
 
