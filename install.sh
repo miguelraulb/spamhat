@@ -22,15 +22,16 @@
 ## Abstract:                                                                    ##
 ##      This script is an installer of SCANS required modules and extra tools.  ##
 ##################################################################################
+
 #!/bin/bash
 
-LOG=log/INSTALL.LOG
+LOG="log/INSTALL.LOG"
 INSTALLER=`whoami`
 ##################################################################################
 banner()
 {
         echo "######################################" >  $LOG
-        echo "###   CPAN MODULES INSTALLATION   ####" >> $LOG
+        echo "###  SCANS MODULES INSTALLATION   ####" >> $LOG
         echo "######################################" >> $LOG
 	echo "______________________________________" >> $LOG
         echo "Started @ [`date`]"                     >> $LOG
@@ -68,39 +69,85 @@ exit_install()
 exec_install()
 {
 	if [ $1 -ne 0 ]; then
-		echo "[EXEC_INSTALL   ]   ERROR - Installation of $2" >> $LOG
+		echo "[EXEC_INSTALL]   ERROR - Installation of $2" >> $LOG
 		exit_install
 	else
-		echo "[EXEC_INSTALL   ]   The package $2 has been installed OK" >> $LOG
+		echo "[EXEC_INSTALL]   The package $2 has been installed OK" >> $LOG
 	fi
+}
+##################################################################################
+install_debian_dev_tools()
+{
+	echo "[INSTALL_DEBIAN_DEV_TOOLS]   Installing DEV TOOLS..." >> $LOG
+	cmd="apt-get -y install gcc build-essential"
+	$cmd
+	exec_install $? "$cmd"
 }
 ##################################################################################
 install_perl()
 {
 	echo "[INSTALL_PERL]   Installing Perl..." >> $LOG
-	cmd = "apt-get install perl"
+	cmd="apt-get install perl"
 	$cmd
-	exec_install $? $cmd
+	exec_install $? "$cmd"
+}
+##################################################################################
+install_mysql()
+{
+	echo "[INSTALL_MYSQL]   Installing MySQL..." >> $LOG
+	cmd="apt-get install mysql-server"
+	$cmd
+	exec_install $? "$cmd"
+	echo "[INSTALL_LIBMYSQLCLIENTDEV]   Installing Lib MySQL Client Dev..." >> $LOG
+	cmd="apt-get install libmysqlclient-dev"
+	$cmd
+	exec_install $? "$cmd"
 }
 ##################################################################################
 upgrade_cpan()
 {
 	echo "[UPGRADE_CPAN]   Upgrading CPAN..." >> $LOG
-	cmd = "cpan -r"
+	cmd="cpan -r"
 	$cmd
-	exec_install $? $cmd
+	exec_install $? "$cmd"
 }
 ##################################################################################
-install_cpan_modules()
+install_cpan_modules_part2()
 {
-	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modules..." >> $LOG
-	cmd = "cpan -f -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File"
+	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modules (2)..." >> $LOG
+	cmd="cpan -f -i LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File"
 	$cmd
-	exec_install $? $cmd
+	exec_install $? "$cmd"
+}
+##################################################################################
+install_cpan_modules_part1()
+{
+	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modulesi (1)..." >> $LOG
+	cmd="cpan -f -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser" 
+	$cmd
+	exec_install $? "$cmd"
+}
+##################################################################################
+finish()
+{
+	echo "######################################" >  $LOG
+        echo "###  SCANS MODULES INSTALLATION   ####" >> $LOG
+        echo "######################################" >> $LOG
+	echo "______________________________________" >> $LOG
+        echo "Finished @ [`date`]"                     >> $LOG
+        echo                                          >> $LOG
+        echo                                          >> $LOG
+        echo "                                      "
+        echo "                                      "
+        echo "DONE. You're now ready to run SCANS   " 
 }
 ##################################################################################
 banner
 user_install
+install_debian_dev_tools
 install_perl
+install_mysql
 upgrade_cpan
-install_cpan_modules
+install_cpan_modules_part1
+install_cpan_modules_part2
+finish
