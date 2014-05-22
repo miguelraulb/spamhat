@@ -18,7 +18,7 @@ sub InsertEvent{
 	my $destination_port		= shift;
 	# ##############################################################################
 	# # Insert Event
-	my $sql = "INSERT INTO Events (timestamp,source_ip,destination_ip,source_port,destination_port) VALUES ('$timestamp','$source_ip','$destination_ip','$source_port','$destination_port');";
+	my $sql = "INSERT INTO Events (timestamp,sensor,source_ip,destination_ip,source_port,destination_port) VALUES ('$timestamp','$CONFIG_VARS::sensor_name','$source_ip','$destination_ip','$source_port','$destination_port');";
 	# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 	my $sth = $CONFIG_VARS::DB_H->prepare($sql);
 	$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
