@@ -22,6 +22,7 @@
 ###############################################################################
 use strict;
 use v5.10.1;
+use experimental 'smartmatch';
 use threads;
 use threads::shared;
 use Cwd;
