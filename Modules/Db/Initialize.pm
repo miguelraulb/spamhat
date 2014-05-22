@@ -33,7 +33,7 @@ sub CreateTables{
 	print "Created table Domains\n" if $CONFIG_VARS::debug == 1;
 	BASE::logMsgT($fcaller,"Created table Domains",2,$GLOBAL_VARS::LOG_FH);
 	##################################################################
-	$sql = "CREATE TABLE IF NOT EXISTS `Events` (`id_event` int(11) not null auto_increment,`timestamp` varchar(30),`source_ip` varchar(16),  `destination_ip` varchar(16),`source_port` int(11),`destination_port` int(11),PRIMARY KEY (`id_event`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
+	$sql = "CREATE TABLE IF NOT EXISTS `Events` (`id_event` int(11) not null auto_increment,`timestamp` varchar(30),`sensor` varchar(30),`source_ip` varchar(16),  `destination_ip` varchar(16),`source_port` int(11),`destination_port` int(11),PRIMARY KEY (`id_event`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 	$CONFIG_VARS::DB_H->do($sql);
 	print "Created table Events\n" if $CONFIG_VARS::debug == 1;
 	BASE::logMsgT($fcaller,"Created table Events",2,$GLOBAL_VARS::LOG_FH);   
