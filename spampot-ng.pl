@@ -205,7 +205,10 @@ sub Collector {
 									$client_socket->send("AUTH <login>\r\n");
 									$client_socket->send("HELP\r\n");
 								}
-			default				{ $client_socket->send("502 Error: command not recognized\r\n"); }
+			default				{ 
+								$client_socket->send("502 Error: command not recognized\r\n");
+								BASE::logMsgT($fcaller,"Command not recognized [$buffer]",0,$GLOBAL_VARS::LOG_FH);
+							}
 		}
 	}
 	close(FH);
