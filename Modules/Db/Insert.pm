@@ -19,7 +19,6 @@ sub InsertEvent{
 	# ##############################################################################
 	# # Insert Event
 	my $sql = "INSERT INTO Events (timestamp,sensor,source_ip,destination_ip,source_port,destination_port) VALUES ('$timestamp','$CONFIG_VARS::sensor_name','$source_ip','$destination_ip','$source_port','$destination_port');";
-	# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 	my $sth = $CONFIG_VARS::DB_H->prepare($sql);
 	$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 	$id=$sth->{mysql_insertid};
@@ -33,7 +32,6 @@ sub InsertEvent{
 		}
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO Urls (url_list,id_event) VALUES ('$list','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Urls for event [$id]\n" if $CONFIG_VARS::debug == 1;
@@ -48,7 +46,6 @@ sub InsertEvent{
 		}
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO Subjects (subject_list,id_event) VALUES ('$list','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Subjects for event [$id]\n" if $CONFIG_VARS::debug == 1;
@@ -63,7 +60,6 @@ sub InsertEvent{
 		}
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO IPs (ip_list,id_event) VALUES ('$list','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted IPs for event [$id]\n" if $CONFIG_VARS::debug == 1;
@@ -83,7 +79,6 @@ sub InsertEvent{
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$list2=substr($list2,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO Domains (source_domain_list,destination_domain_list,id_event) VALUES ('$list','$list2','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Domains for event [$id]\n" if $CONFIG_VARS::debug == 1;
@@ -99,7 +94,6 @@ sub InsertEvent{
 		}
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO Usernames (user_list,id_event) VALUES ('$list','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Usernames for event [$id]\n" if $CONFIG_VARS::debug == 1;
@@ -114,7 +108,6 @@ sub InsertEvent{
 		}
 		$list=substr($list,0,-1); # Get rid of the last comma
 		$sql = "INSERT INTO Binaries (md5_list,id_event) VALUES ('$list','$id');";
-		# print "$sql\n"; ########################### REMOVE BEFORE PRODUCTION'S RELEASE
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Binaries for event [$id]\n" if $CONFIG_VARS::debug == 1;
