@@ -1,13 +1,3 @@
-##################################################
-#                                                #
-# SPAMPOT CONFIGURATION FILE                     #
-# HONEYNET PROJECT UNAM CHAPTER SSI/UNAM-CERT    #
-# MIGUEL RAUL BAUTISTA SORIA                     #
-# 2014                                           #
-# mbautista@seguridad.unam.mx                    #
-#                                                #
-##################################################
-
 package REGEX;
 
 # Top Level Domain      
