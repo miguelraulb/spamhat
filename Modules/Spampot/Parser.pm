@@ -1,26 +1,5 @@
 #!/usr/bin/perl
-###############################################################################
-## This file is free software; as a special exception the author gives       ##
-## unlimited permission to copy and/or distribute it, with or without        ##
-## modifications, as long as this notice is preserved.                       ##
-##                                                                           ##
-## This program is distributed in the hope that it will be useful, but       ##
-## WITHOUT ANY WARRANTY, to the extent permitted by law; without even the    ##
-## implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  ##
-##                                                                           ##
-###############################################################################
-## Honeynet Project UNAM-Chapter                                             ##
-## SSI/UNAM-CERT                                                             ##
-## honeynet@seguridad.unam.mx                                                ##
-## www.seguridad.unam.mx/www.cert.org.mx/www.honeynet.unam.mx                ##
-##                                                                           ##
-###############################################################################
-## Spampot Tool and Spam Processor V1.0                                      ##
-## By [Miguel Bautista] [mbautista@seguridad.unam.mx, miguelraulb@gmail.com] ##
-## Date [2013-02-23]                                                         ##
-## ------------------------------------------------------------------------- ##
-## Abstract:                                                                 ##
-###############################################################################
+
 use Modules::Utils::Base;
 use Modules::Spampot::Urls;
 use Modules::Spampot::Subjects;
