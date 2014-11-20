@@ -70,16 +70,6 @@ sub GetUrls{
 				}
 			}
 		}
-	
-		
-		if($CONFIG_VARS::phoneyc){
-			print "Calling PhoneyC\n" if $CONFIG_VARS::debug == 1;
-			BASE::logMsgT($fcaller,"Calling PhoneyC",2,$GLOBAL_VARS::LOG_FH);
-			BASE::logMsgT($fcaller,"Calling PhoneyC",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-			foreach my $index (keys %url){
-				PhoneyC("GetUrls",$index);
-			}
-		}
 	}
 }
 1;
