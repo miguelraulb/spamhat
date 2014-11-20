@@ -82,21 +82,4 @@ sub GetUrls{
 		}
 	}
 }
-
-sub PhoneyC{
-        my $fcaller     = shift;
-        my $fname       = BASE::getFunctionName($fcaller,(caller(0))[3]);
-        my $url   	= shift;
-
-	print "Analyzing URL: $url\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Analyzing URL: $url",2,$GLOBAL_VARS::LOG_FH);
-	BASE::logMsgT($fcaller,"Analyzing URL: $url",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-	my $output 	= capturex($CONFIG_VARS::phoneyc_path, $url);
-	print "PhoneyC output: $output\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"PhoneyC output: $output",2,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-	BASE::logMsgT($fcaller,"PhoneyC output: $output",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-	open(FH_PhC,">>$CONFIG_VARS::phoneyc_log") || BASE::logMsgT($fcaller,"Error opening PhoneyC log file",-1,$GLOBAL_VARS::LOG_FH);
-	print FH_PhC "Analysis of URL [$url] by PhoneyC: $output\n";
-	close(FH_PhC);
-}
 1;
