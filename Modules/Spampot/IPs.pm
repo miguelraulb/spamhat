@@ -25,9 +25,5 @@ sub GetIPs{
 		}
 	}
 	close(FH);
-
-	#foreach my $index (sort { $ip{$b} <=> $ip{$a} || $a cmp $b } keys %ip){
-	#	print "$index - $ip{$index}\n";
-	#}
 }
 1;
