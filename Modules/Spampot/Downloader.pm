@@ -22,13 +22,13 @@ sub DownloadURL{
 	#die $response->status_line if !$response->is_success;
 	$file = $response->decoded_content( charset => 'none' );
 	print "Downloading File: $filename\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Downloading File: $filename",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Downloading File: $filename",2,$GLOBAL_VARS::LOG_FH);
 	print "Path: $CONFIG_VARS::binaries_output/$name_folder/$filename\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Downloading URLs",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Downloading URLs",2,$GLOBAL_VARS::LOG_FH);
 	unless(-d "$CONFIG_VARS::binaries_output/$name_folder"){
 		mkdir "$CONFIG_VARS::binaries_output/$name_folder";
 		print "Created directory $CONFIG_VARS::binaries_output/$name_folder\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Created directory $CONFIG_VARS::binaries_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);	
+		BASE::logMsgT($fname,"Created directory $CONFIG_VARS::binaries_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);	
 	}
 	LWP::Simple::getstore($url,"$CONFIG_VARS::binaries_output/$name_folder/$filename");
 	return 0;

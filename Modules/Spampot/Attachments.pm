@@ -21,7 +21,7 @@ sub DecodeAttachments{
     my $name;
     $name_folder = shift;
     
-    BASE::logMsgT($fcaller,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
+    BASE::logMsgT($fname,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
     my $mailbox = Mail::MboxParser->new($file_name,decode=>'ALL',parseropts=>$parseropts);
     my @messages_array = $mailbox->get_messages;
     ######################################################################
@@ -30,13 +30,13 @@ sub DecodeAttachments{
     ######################################################################
 
    
-    BASE::logMsgT($fcaller,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
+    BASE::logMsgT($fname,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
     while (my $msg = $mailbox->get_messages)
     {
         unless(-d "$CONFIG_VARS::attachments_output/$name_folder"){
             mkdir "$CONFIG_VARS::attachments_output/$name_folder";
             print "Created directory $CONFIG_VARS::attachments_output/$name_folder\n" if $CONFIG_VARS::debug == 1;
-            BASE::logMsgT($fcaller,"Created directory $CONFIG_VARS::attachments_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);
+            BASE::logMsgT($fname,"Created directory $CONFIG_VARS::attachments_output/$name_folder",2,$GLOBAL_VARS::LOG_FH);
         }
         $msg->store_all_attachments(path => "$CONFIG_VARS::attachments_output/$name_folder");
         if ($msg =~ /.*name="([A-z\d\-\.]+)"/){
@@ -44,10 +44,10 @@ sub DecodeAttachments{
         }
         ++$total;
         print "Decoded file: $name\n" if $CONFIG_VARS::debug == 1;
-        BASE::logMsgT($fcaller,"Decoded file: $name",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+        BASE::logMsgT($fname,"Decoded file: $name",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
     }
     $ATTACHMENTS::with_attachment = 1 if $total != 0;
     print "$total file(s) decoded\n" if $CONFIG_VARS::debug == 1;
-    BASE::logMsgT($fcaller,"$total file(s) decoded",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+    BASE::logMsgT($fname,"$total file(s) decoded",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 }
 1;

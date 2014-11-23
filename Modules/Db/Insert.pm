@@ -23,7 +23,7 @@ sub InsertEvent{
 	$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 	$id=$sth->{mysql_insertid};
 	print "Inserted Event with ID: $id\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Inserted event with ID: $id",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Inserted event with ID: $id",2,$GLOBAL_VARS::LOG_FH);
 	##############################################################################
 	# Retrieve and Insert URLs
 	if($URLS::with_url){
@@ -35,7 +35,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Urls for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted Urls for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted Urls for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 	}
 	###############################################################################
@@ -49,7 +49,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Subjects for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted Subjects for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted Subjects for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 	}
 	###############################################################################
@@ -63,7 +63,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted IPs for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted IPs for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted IPs for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 	}
 	###############################################################################
@@ -82,7 +82,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Domains for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted Domains for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted Domains for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 		$list2="";
 	}
@@ -97,7 +97,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Usernames for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted Usernames for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted Usernames for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 	}
 	#############################################################################
@@ -111,7 +111,7 @@ sub InsertEvent{
 		$sth = $CONFIG_VARS::DB_H->prepare($sql);
 		$sth->execute || die "SQL Insert Error: $DBI::errstr\n";
 		print "Inserted Binaries for event [$id]\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Inserted Binaries for event [$id]",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Inserted Binaries for event [$id]",2,$GLOBAL_VARS::LOG_FH);
 		$list="";
 	}
 	###############################################################################

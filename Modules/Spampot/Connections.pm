@@ -11,9 +11,9 @@
 # 	my $local_port	= shift;
 # 	my $time	 = getTimestamp("localtime","Tdate");
 # 
-# 	BASE::logMsgT($fcaller,"Processing Connections",2,$GLOBAL_VARS::LOG_FH);
+# 	BASE::logMsgT($fname,"Processing Connections",2,$GLOBAL_VARS::LOG_FH);
 # 	print "Incoming connection: $remote_ip:$remote_port\-\>$local_ip:$local_port\n" if $CONFIG_VARS::debug == 1;
-#     BASE::logMsgT($fcaller,"Incoming connection: $remote_ip:$remote_port\-\>$local_ip:$local_port",2,$GLOBAL_VARS::LOG_FH);
+#     BASE::logMsgT($fname,"Incoming connection: $remote_ip:$remote_port\-\>$local_ip:$local_port",2,$GLOBAL_VARS::LOG_FH);
 #     
 # } 
 # 1;

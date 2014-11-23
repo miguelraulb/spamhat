@@ -19,13 +19,13 @@ sub GetUrls{
 	my %domain;
 	
 	#URL REGEX Comparison
-	BASE::logMsgT($fcaller,"Getting URLs",2,$GLOBAL_VARS::LOG_FH);
-	open(FH,$file_name) || BASE::logMsgT($fcaller,"Error opening mail file: $file_name",-1,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Getting URLs",2,$GLOBAL_VARS::LOG_FH);
+	open(FH,$file_name) || BASE::logMsgT($fname,"Error opening mail file: $file_name",-1,$GLOBAL_VARS::LOG_FH);
 	while(<FH>){
 		chomp($_);
 		if($_ =~ /($REGEX::url)/){
 			print "Matched URL: $&\n" if $CONFIG_VARS::debug == 1;
-			BASE::logMsgT($fcaller,"Matched URL: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+			BASE::logMsgT($fname,"Matched URL: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 			$URLS::url{$&}++;
 			$URLS::with_url=1;
 		}
@@ -35,16 +35,16 @@ sub GetUrls{
 	#Check if there was only one URL, instead do nothing
 	if ($URLS::with_url){
 	
-		open(FH_BP,$CONFIG_VARS::blacklist_pattern) || BASE::logMsgT($fcaller,"Error opening blacklist pattern file: $CONFIG_VARS::blacklist_pattern",-1,$GLOBAL_VARS::LOG_FH);
-		open(FH_BD,$CONFIG_VARS::blacklist_domain) || BASE::logMsgT($fcaller,"Error opening blacklist pattern file: $CONFIG_VARS::blacklist_pattern",-1,$GLOBAL_VARS::LOG_FH);
-		BASE::logMsgT($fcaller,"Looking blacklist patterns on URLs",2,$GLOBAL_VARS::LOG_FH);
+		open(FH_BP,$CONFIG_VARS::blacklist_pattern) || BASE::logMsgT($fname,"Error opening blacklist pattern file: $CONFIG_VARS::blacklist_pattern",-1,$GLOBAL_VARS::LOG_FH);
+		open(FH_BD,$CONFIG_VARS::blacklist_domain) || BASE::logMsgT($fname,"Error opening blacklist pattern file: $CONFIG_VARS::blacklist_pattern",-1,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Looking blacklist patterns on URLs",2,$GLOBAL_VARS::LOG_FH);
 		foreach my $index (sort { $URLS::url{$b} <=> $URLS::url{$a} || $a cmp $b } keys %URLS::url){
 			#Pattern Comparison
 			while(<FH_BP>){
 				chomp($_);
 				if($index =~ /$_/){
 					print "Matched Pattern: $&\n" if $CONFIG_VARS::debug == 1;
-					BASE::logMsgT($fcaller,"Matched Pattern: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+					BASE::logMsgT($fname,"Matched Pattern: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 					$pattern{$&}++;
 				}
 			}
@@ -53,7 +53,7 @@ sub GetUrls{
 				chomp($_);
 				if($index =~ /$_/){
 					print "Matched Domain: $&\n" if $CONFIG_VARS::debug == 1;
-					BASE::logMsgT($fcaller,"Matched Domain: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+					BASE::logMsgT($fname,"Matched Domain: $&",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 					$domain{$&}++;
 				}
 			}
@@ -66,7 +66,7 @@ sub GetUrls{
 				$dl_code = DOWNLOADS::DownloadURL("GetUrls",$var,$name_folder);
 				if($dl_code == "1"){
 					print "Error downloading URL: $var\n" if $CONFIG_VARS::debug == 1;
-					BASE::logMsgT($fcaller,"Error downloading URL: $var",1,$GLOBAL_VARS::LOG_FH);
+					BASE::logMsgT($fname,"Error downloading URL: $var",1,$GLOBAL_VARS::LOG_FH);
 				}
 			}
 		}
