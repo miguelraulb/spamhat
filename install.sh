@@ -115,7 +115,7 @@ upgrade_cpan()
 install_cpan_modules_part2()
 {
 	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modules (2)..." >> $LOG
-	cmd="cpan -f -i LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File experimental"
+	cmd="cpan -f -i LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File"
 	$cmd
 	exec_install $? "$cmd"
 }
@@ -123,7 +123,7 @@ install_cpan_modules_part2()
 install_cpan_modules_part1()
 {
 	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modulesi (1)..." >> $LOG
-	cmd="cpan -f -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser" 
+	cmd="cpan -f -i IO::Socket Mail::MboxParser experimental" 
 	$cmd
 	exec_install $? "$cmd"
 }

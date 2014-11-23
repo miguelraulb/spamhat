@@ -12,12 +12,10 @@ miguelraulb at gmail dot com
 * Perl 5.10.1
 * CPAN Modules
 	- IO::Socket
-	- Switch
-	- Proc::ProcessTable
-	- IPC::System::Simple
 	- Mail::MboxParser
 	- LWP::Simple
 	- LWP::UserAgent
+	- experimental
 	- DBI
 	- DBD::mysql
 	- Digest::MD5
