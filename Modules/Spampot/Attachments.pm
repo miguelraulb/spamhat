@@ -29,8 +29,7 @@ sub DecodeAttachments{
     # my $mb = new Mail::MboxParser ("mbox", newline => '#DELIMITER');   #
     ######################################################################
 
-   
-    BASE::logMsgT($fname,"Decoding Attachments",2,$GLOBAL_VARS::LOG_FH);
+  
     while (my $msg = $mailbox->get_messages)
     {
         unless(-d "$CONFIG_VARS::attachments_output/$name_folder"){
