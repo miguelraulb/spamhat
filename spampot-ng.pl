@@ -58,13 +58,13 @@ package main;
 sub CheckConfig {
 	my $fcaller 	= shift;
 	my $fname 	= BASE::getFunctionName($fcaller,(caller(0))[3]);
-	BASE::logMsgT($fcaller,"Checking Spampot config...",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Checking Spampot config...",2,$GLOBAL_VARS::LOG_FH);
 	print "Standard output debug mode on\n" if $CONFIG_VARS::debug == 1;
 	print "Log file debug mode on\n" if $CONFIG_VARS::debug == 2;
 	unless(-d $CONFIG_VARS::spam_directory){
 		mkdir $CONFIG_VARS::spam_directory;
 		print "Created spam directory $CONFIG_VARS::spam_directory\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Created spam directory $CONFIG_VARS::spam_directory",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Created spam directory $CONFIG_VARS::spam_directory",2,$GLOBAL_VARS::LOG_FH);
 	}
 	unless(-d $CONFIG_VARS::output_directory){
 		mkdir $CONFIG_VARS::output_directory;
@@ -75,15 +75,15 @@ sub CheckConfig {
 	unless(-d $CONFIG_VARS::attachments_output){
 		mkdir $CONFIG_VARS::attachments_output;
 		print "Created output directory $CONFIG_VARS::output_directory and subdirectories\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Created output directory $CONFIG_VARS::output_directory and subdirectories",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Created output directory $CONFIG_VARS::output_directory and subdirectories",2,$GLOBAL_VARS::LOG_FH);
 	}
 	unless(-d $CONFIG_VARS::log_directory){
 		mkdir $CONFIG_VARS::log_directory;
 		print "Created log directory $CONFIG_VARS::log_directory\n" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"Created log directory $CONFIG_VARS::log_directory",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Created log directory $CONFIG_VARS::log_directory",2,$GLOBAL_VARS::LOG_FH);
 	}
 	print "Writing info to $CONFIG_VARS::LOG\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Writing info to $CONFIG_VARS::LOG",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Writing info to $CONFIG_VARS::LOG",2,$GLOBAL_VARS::LOG_FH);
 	ConnectDatabase("CheckConfig");
 	# Check the total of tables required to store info on the DB
 	CreateTables("CheckConfig") if CheckTables("CheckConfig") != '7';
@@ -102,10 +102,10 @@ sub StartServer {
 					Proto		=> 'tcp',
 					ReuseAddr 	=> 1
 					# ReadTimeout => 5 # experimental
-				) or BASE::logMsgT($fcaller,"Error binding on $CONFIG_VARS::address:$CONFIG_VARS::port",-1,$GLOBAL_VARS::LOG_FH);
+				) or BASE::logMsgT($fname,"Error binding on $CONFIG_VARS::address:$CONFIG_VARS::port",-1,$GLOBAL_VARS::LOG_FH);
 	print "Binding on $CONFIG_VARS::address:$CONFIG_VARS::port\n" if $CONFIG_VARS::debug == 1;
 	BASE::showBannerPHU("main",1,"Spampot Tool v$GLOBAL_VARS::VERSION",$GLOBAL_VARS::LOG_FH);
-	BASE::logMsgT($fcaller,"Started SMTP Server binded on $CONFIG_VARS::address:$CONFIG_VARS::port",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Started SMTP Server binded on $GLOBAL_VARS::address:$CONFIG_VARS::port",2,$GLOBAL_VARS::LOG_FH);
 	# Enable r/w timeouts on the socket (experimental)
 	# IO::Socket::Timeout->enable_timeouts_on($smtp_socket);
 	# $smtp_socket->read_timeout(5);
@@ -114,7 +114,7 @@ sub StartServer {
 			async { Collector("StartServer",$client_socket) }->detach();
 	}
 	print "Closing SMTP Server...\n" if $CONFIG_VARS::debug == 1;
-	BASE::logMsgT($fcaller,"Spampot stopped receiving connections",1,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Spampot stopped receiving connections",1,$GLOBAL_VARS::LOG_FH);
 }
 ###############################################################################
 sub Collector {
@@ -130,7 +130,7 @@ sub Collector {
 	my $file_name;	# Output file name
 	$| 			= 1;
 	print "Handler[$fileno]: Waiting for message\n" if $CONFIG_VARS::debug == 3;
-	BASE::logMsgT($fcaller,"Handler[$fileno]: Waiting for message",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+	BASE::logMsgT($fname,"Handler[$fileno]: Waiting for message",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 	$client_socket->send("220 $CONFIG_VARS::banner\r\n");
 	#### Generate random message ID ####
 	$msg_id = md5_hex(rand);
@@ -159,11 +159,11 @@ sub Collector {
 		}
 		$message_flag = 1;
 		open(FH,">>$CONFIG_VARS::spam_directory/$file_name") ||
-		BASE::logMsgT($fcaller,"Error creating mail file: $file_name",1,$GLOBAL_VARS::LOG_FH);
-		BASE::logMsgT($fcaller,"Saving data into file: $file_name",2,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Error creating mail file: $file_name",1,$GLOBAL_VARS::LOG_FH);
+		BASE::logMsgT($fname,"Saving data into file: $file_name",2,$GLOBAL_VARS::LOG_FH);
 		print FH "$buffer";
 		print "$buffer" if $CONFIG_VARS::debug == 1;
-		BASE::logMsgT($fcaller,"$buffer",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+		BASE::logMsgT($fname,"$buffer",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 		given (substr($buffer,0,4)) {
 			when (/HELO|EHLO/i)	{ $client_socket->send("250 $CONFIG_VARS::hostname\r\n"); }
 			when (/MAIL/i)		{ $client_socket->send("250 OK\r\n"); }
@@ -182,7 +182,7 @@ sub Collector {
 											print "$line" if $CONFIG_VARS::debug == 1;
 										}
 								  	}
-								  	BASE::logMsgT($fcaller,"All the data has been received",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+								  	BASE::logMsgT($fname,"All the data has been received",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 									$client_socket->send("250 OK: Queued message as $msg_id\r\n");
 								}
 			when (/QUIT/i)		{ $client_socket->send("221 Bye\r\n"); 
@@ -207,18 +207,18 @@ sub Collector {
 								}
 			default				{ 
 								$client_socket->send("502 Error: command not recognized\r\n");
-								BASE::logMsgT($fcaller,"Command not recognized [$buffer]",0,$GLOBAL_VARS::LOG_FH);
+								BASE::logMsgT($fname,"Command not recognized [$buffer]",0,$GLOBAL_VARS::LOG_FH);
 							}
 		}
 	}
 	close(FH);
-	BASE::logMsgT($fcaller,"Closed file: $file_name",2,$GLOBAL_VARS::LOG_FH);
+	BASE::logMsgT($fname,"Closed file: $file_name",2,$GLOBAL_VARS::LOG_FH);
 	$client_socket->close();
 	if($message_flag){
 		ParseMail("StartServer",$file_name,$info{'remote_ip'},$info{'remote_port'},$info{'local_ip'},$info{'local_port'});
 	}
 	print "Handler[$fileno] is closing\n" if $CONFIG_VARS::debug == 3;
-	BASE::logMsgT($fcaller,"Handler[$fileno] is closing",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
+	BASE::logMsgT($fname,"Handler[$fileno] is closing",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 }
 ###############################################################################
 sub PIPE{
