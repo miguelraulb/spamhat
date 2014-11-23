@@ -15,8 +15,6 @@
 ##                                                                          ##
 ##############################################################################
 use strict;
-use Switch;
-use Proc::ProcessTable;
 
 package BASE;
 
@@ -134,3 +132,4 @@ sub showBannerPHU
 		logMsgT($function_name,"Invalid Output",0,$fh);
 	}
 }
+1;
