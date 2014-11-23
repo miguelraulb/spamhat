@@ -18,7 +18,6 @@ miguelraulb at gmail dot com
 	- experimental
 	- DBI
 	- DBD::mysql
-	- Digest::MD5
 	- Digest::MD5::File
 	
 * MySQL Server

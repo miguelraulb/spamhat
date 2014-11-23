@@ -23,7 +23,7 @@ CPAN Modules
 
 Install the required CPAN modules 
 
-`# cpan -i IO::Socket Switch Proc::ProcessTable IPC::System::Simple Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File`
+`# cpan -i IO::Socket Mail::MboxParser LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File`
 
 MySQL Server
 ------------

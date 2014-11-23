@@ -115,7 +115,7 @@ upgrade_cpan()
 install_cpan_modules_part2()
 {
 	echo "[INSTALL_CPAN_MODULES]   Installing CPAN Modules (2)..." >> $LOG
-	cmd="cpan -f -i LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5 Digest::MD5::File"
+	cmd="cpan -f -i LWP::Simple LWP::UserAgent DBI DBD::mysql Digest::MD5::File"
 	$cmd
 	exec_install $? "$cmd"
 }
