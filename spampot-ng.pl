@@ -173,7 +173,7 @@ sub Collector {
 									$client_socket->send("354 Enter message, end with \".\"\r\n");
 									while( my $line = <$client_socket> ){
 				 						chomp($line);
-										if($line =~ m/^(\.)$/){
+										if($line =~ m/^.$/){
 											print FH "$line\n";
 											print "$line" if $CONFIG_VARS::debug == 1;
 											last;
@@ -184,11 +184,10 @@ sub Collector {
 								  	}
 								  	BASE::logMsgT($fname,"All the data has been received",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
 									$client_socket->send("250 OK: Queued message as $msg_id\r\n");
-								}
+						}
 			when (/QUIT/i)		{ $client_socket->send("221 Bye\r\n"); 
-								$client_socket->close();
-							  	last;
-								}
+						  $client_socket->close();
+						}
 			when (/VRFY/i)		{ chomp($buffer); $client_socket->send("250 ".substr($buffer,5)." OK\r\n"); }
 			when (/EXPN/i)		{ $client_socket->send("250 OK\r\n"); }
 			when (/AUTH/i)		{ $client_socket->send("503 Error: authentication not enabled\r\n"); }
@@ -219,10 +218,5 @@ sub Collector {
 	}
 	print "Handler[$fileno] is closing\n" if $CONFIG_VARS::debug == 3;
 	BASE::logMsgT($fname,"Handler[$fileno] is closing",3,$GLOBAL_VARS::LOG_FH) if $CONFIG_VARS::debug == 2;
-}
-###############################################################################
-sub PIPE{
-	BASE::logMsgT("PIPE","Caught SIGPIPE",1,$GLOBAL_VARS::LOG_FH);
-	return 0;
 }
 ###############################################################################
