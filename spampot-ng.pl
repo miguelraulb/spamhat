@@ -150,6 +150,7 @@ sub Collector {
 	$info{'local_ip'} = inet_ntoa($local_iaddr);
 	$info{'local_port'} = $local_port;
 	$file_name = $info{'local_ip'}."-".time;
+	BASE::logMsgT($fname,"Incoming connection from $info{'remote_ip'}:$info{'remote_port'} to $info{'local_ip'}:$info{'local_port'}",2,$GLOBAL_VARS::LOG_FH);
 	#### Process the SMTP commands (RFC 0821)
 	while( $buffer = <$client_socket> ){
 		if (!defined $buffer && 0+$! == ETIMEDOUT) {
