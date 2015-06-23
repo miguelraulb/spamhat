@@ -139,7 +139,7 @@ finish()
         echo                                          >> $LOG
         echo "                                      "
         echo "                                      "
-        echo "DONE. You're now ready to run SCANS   " 
+        echo "DONE. You're now ready to run SpamHAT   " 
 }
 ##################################################################################
 banner

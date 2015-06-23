@@ -10,16 +10,14 @@
 ##                                                                           ##
 ###############################################################################
 ## Honeynet Project UNAM-Chapter                                             ##
-## SSI/UNAM-CERT                                                             ##
-## honeynet@seguridad.unam.mx                                                ##
-## www.seguridad.unam.mx/www.cert.org.mx/www.honeynet.unam.mx                ##
-##                                                                           ##
+################################################################################
+## Spam Honeypot and Analysis Tool (SpamHAT) V1.0                            ##
+## By [Miguel Bautista 'mkrul']						     ##
+## [mkrul <at> outlook <dot> com]			   		     ##
+## [miguelraulb <at> gmail <dot> com] 					     ##
 ###############################################################################
-## Spampot Tool and Spam Processor V1.0                                      ##
-## By [Miguel Bautista] [mbautista <at> seguridad <dot> unam <dot> mx        ##
-##  miguelraulb <at> gmail <dot> com] 					     ##
-## Date [2014-02-28]                                                         ##
-###############################################################################
+
+##############################################################################
 use strict;
 use v5.10.1;
 use experimental 'smartmatch';

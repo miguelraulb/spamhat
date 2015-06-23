@@ -3,7 +3,6 @@ use strict;
 use Modules::Utils::Base;
 use Modules::Spampot::Regex;
 use Modules::Spampot::Downloader;
-use IPC::System::Simple qw(system systemx capture capturex);
 
 package URLS;
 	our %url;
