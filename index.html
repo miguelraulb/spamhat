@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Spamhat by miguelraulb</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Spamhat</h1>
+        <h2>Spam Honeypot Tool</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/miguelraulb/spamhat/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/miguelraulb/spamhat/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/miguelraulb/spamhat" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="spam-honeypot-tool" class="anchor" href="#spam-honeypot-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spam Honeypot Tool</h1>
+
+<h2>
+<a id="simple-open-relay-simulator-for-spam-capture-and-analysis" class="anchor" href="#simple-open-relay-simulator-for-spam-capture-and-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Open Relay Simulator for Spam Capture and Analysis</h2>
+
+<p>Feel free to ask anything or request help for development</p>
+
+<p>miguelraulb at gmail dot com</p>
+
+<h3>
+<a id="installation-requirements-on-debian-base-6x-7x" class="anchor" href="#installation-requirements-on-debian-base-6x-7x" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation Requirements on Debian (base) 6.x, 7.x</h3>
+
+<ul>
+<li>Perl 5.10.1</li>
+<li>
+<p>CPAN Modules</p>
+
+<ul>
+<li>IO::Socket</li>
+<li>Mail::MboxParser</li>
+<li>LWP::Simple</li>
+<li>LWP::UserAgent</li>
+<li>experimental</li>
+<li>DBI</li>
+<li>DBD::mysql</li>
+<li>Digest::MD5::File</li>
+</ul>
+</li>
+<li><p>MySQL Server</p></li>
+</ul>
+
+<p>Installation
+Linux Debian installation <a href="https://github.com/miguelraulb/spampot/blob/master/docs/linux_install.md">instructions</a></p>
+
+<h3>
+<a id="execution" class="anchor" href="#execution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Execution</h3>
+
+<p>Once you have all the modules installed you just have to create a database called spampot or whatever you wish to name it, create a user with password and then assign the name of your database to the user you've already created.</p>
+
+<p>Please set this values on the <code>spampot-ng.conf</code> file.</p>
+
+<p>In order to run the tool you have to run it with sudo or using a wrapper as authbind, <a href="http://mutelight.org/authbind">here</a> are the instructions</p>
+
+<p><code># sudo perl spampot-ng.pl</code></p>
+
+<p><code># authbind --deep perl spampot-ng.pl</code></p>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Miguel Raúl Bautista Soria</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
